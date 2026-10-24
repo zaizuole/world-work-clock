@@ -34,3 +34,18 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}.mute
 @media(max-width:767px){.status-line{font-size:11px;gap:8px;margin-bottom:8px}.status-line button{font-size:11px}.focus-title{font-size:21px}.focus-description{font-size:12px}.focus-meta{font-size:11px}.focus-meta button{min-height:36px;font-size:11px}.chip-name{font-size:12px}.chip-detail{font-size:11px;line-height:1.5}.country-chip{min-height:68px}.focus-rest{font-size:12px}.focus-aside p,.focus-aside button,.focus-aside .alert-label{font-size:12px}.focus-aside{grid-template-columns:1fr}.focus-aside button{grid-column:auto;grid-row:auto;min-height:36px;margin:0}.focus-aside p{grid-column:auto}.focus-aside .alert-name{font-size:14px}.country-name small,.city-time small{font-size:11px}.country-row{padding:16px 15px 24px;grid-template-columns:minmax(110px,1fr) 72px auto}.badge{font-size:11px;padding:5px}.region-details{padding:0 15px 18px}.region-detail{gap:12px}.region-detail .band{margin-bottom:17px}.legend{font-size:11px;gap:10px}.overlap-chart{padding:16px}.overlap-title{display:block}.overlap-title small{display:block;margin-top:6px}.overlap-bars{gap:1px}.country-settings{grid-template-columns:1fr}.weights{grid-template-columns:1fr 1fr}.settings-dialog,.source-dialog{padding:20px}.source-list{grid-template-columns:1fr}.dialog-actions{flex-wrap:wrap;gap:8px}.calendar-page{padding:18px 15px}.calendar-top{align-items:flex-start;flex-wrap:wrap}.calendar-top select{width:100%;max-width:100%;background:white}.footer{font-size:11px}.time-disclosure summary span{font-size:11px}.datebox input{min-height:44px}.datebox label{font-size:12px}.top-clock small{font-size:10px}.region-detail .mobile-hours{font-size:9px}}
 
 .focus-meta button{min-height:44px}.focus-meta{min-height:44px}
+
+/* 完整交付复核：各页面模式清晰，未知覆盖不冒充无假日。 */
+:root{--line:#e4e4e7}
+.chip-time{display:block;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:4px;white-space:nowrap}
+.chip-detail{font-size:12px;line-height:1.5;white-space:normal}
+.calendar-mode{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:20px;font-size:13px}
+.coverage-notice{font-size:12px;line-height:1.7;color:var(--amber);margin:14px 0;overflow-wrap:anywhere}
+.coverage-notice summary{cursor:pointer;min-height:44px;display:flex;align-items:center;text-decoration:underline;text-underline-offset:3px}
+.coverage-notice p{margin:6px 0}
+.coverage-notice summary:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.country-check,.city-checks label,.weekdays label,.date-shortcuts button,.footer button,.method button{min-height:44px}
+@media(max-width:767px){.country-chip{padding:8px 6px;min-height:77px}.chip-detail{font-size:12px;margin-top:4px;line-height:1.4}.chip-time{margin-top:3px;font-size:12px}.calendar-mode{align-items:flex-start}.calendar-mode b{line-height:1.7}.calendar-mode button{flex-shrink:0}.focus-aside button{min-height:44px}}
+.country-name small,.city-time small,.badge,.hours,.table-head,.band .mobile-hours,.top-clock small{font-size:12px}
+@media(max-width:767px){.country-chip .chip-name .flag{font-size:12px}.brand-mark{width:32px;height:32px}.country-row{grid-template-columns:minmax(100px,1fr) 72px auto}.badge{white-space:normal;line-height:1.4;max-width:90px}.band .mobile-hours{font-size:10px}}
+@media(max-width:380px){.focus-main{padding-left:15px;padding-right:15px}.active-countries{gap:6px}.country-chip{padding-left:4px;padding-right:4px}.chip-detail{letter-spacing:-.2px}}

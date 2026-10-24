@@ -11,18 +11,24 @@ export function parseIntervals(value: string): [number,number][] {
   if(!intervals.length||intervals.length>4||intervals.some(([a,b],i)=>a>=b||(i>0&&intervals[i-1][1]>a))) throw new Error('时段不能重叠或跨午夜，最多 4 段');
   return intervals;
 }
+function record(value: unknown): value is Record<string, unknown> {
+  return !!value && typeof value === 'object' && !Array.isArray(value);
+}
 function validSchedule(s: Schedule) {
-  return s && Array.isArray(s.weekend)&&s.weekend.every(d=>Number.isInteger(d)&&d>=0&&d<=6)&&new Set(s.weekend).size===s.weekend.length && Array.isArray(s.intervals)&&s.intervals.length>0&&s.intervals.length<=4&&s.intervals.every((p,i)=>Array.isArray(p)&&p.length===2&&p.every(Number.isInteger)&&p[0]>=0&&p[1]<=1440&&p[0]<p[1]&&(i===0||s.intervals[i-1][1]<=p[0]));
+  return record(s) && Array.isArray(s.weekend)&&s.weekend.every(d=>Number.isInteger(d)&&d>=0&&d<=6)&&new Set(s.weekend).size===s.weekend.length && Array.isArray(s.intervals)&&s.intervals.length>0&&s.intervals.length<=4&&s.intervals.every((p,i)=>Array.isArray(p)&&p.length===2&&p.every(Number.isInteger)&&p[0]>=0&&p[1]<=1440&&p[0]<p[1]&&(i===0||s.intervals[i-1][1]<=p[0]));
 }
 export function validSettings(value: unknown): value is Settings {
-  if(!value||typeof value!=='object') return false;
+  if(!record(value)) return false;
   const s=value as Settings;
-  if(s.schemaVersion!==1||!Array.isArray(s.enabled)||!s.enabled.length||new Set(s.enabled).size!==s.enabled.length||s.enabled.some(c=>!countries.some(x=>x.code===c))||!s.regions||!s.schedules||!s.weights||typeof s.weighted!=='boolean') return false;
+  if(s.schemaVersion!==1||!Array.isArray(s.enabled)||!s.enabled.length||new Set(s.enabled).size!==s.enabled.length||s.enabled.some(c=>!countries.some(x=>x.code===c))||!record(s.regions)||!record(s.schedules)||!record(s.weights)||typeof s.weighted!=='boolean') return false;
   for(const c of countries) {
     if(!Array.isArray(s.regions[c.code])||!s.regions[c.code].length||s.regions[c.code].some(id=>!c.regions.some(r=>r.id===id))||new Set(s.regions[c.code]).size!==s.regions[c.code].length) return false;
     if(typeof s.weights[c.code]!=='number'||!Number.isFinite(s.weights[c.code])||s.weights[c.code]<0) return false;
   }
-  if(s.weighted&&!s.enabled.some(c=>s.weights[c]>0)) return false;
+  if(s.weighted) {
+    const total=s.enabled.reduce((sum,c)=>sum+s.weights[c],0);
+    if(!Number.isFinite(total)||total<=0) return false;
+  }
   return Object.entries(s.schedules).every(([id,v])=>countries.some(c=>c.regions.some(r=>r.id===id))&&validSchedule(v));
 }
 export function loadSettings(): {settings:Settings; warning:string} {

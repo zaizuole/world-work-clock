@@ -19,3 +19,12 @@ assert '2026-11-03' not in d['calendars']['AU-NSW']['years']['2026']['days']
 # Macau PUBLIC covers mandatory holidays; do not include public-employee compensatory days.
 assert '2026-10-05' not in d['calendars']['MO']['years']['2026']['days']
 print(f'Calendar coverage and {sum(map(len,checks.values()))} date fixtures passed.')
+
+# Russia also transfers work onto weekends: exporting only holiday names loses this.
+assert d['calendars']['RU']['years']['2025']['days']['2025-11-01']['kind']=='working-day'
+assert d['calendars']['SG']['years']['2026']['days']['2026-06-01']['kind']=='public-holiday'
+assert '2026-11-30' in d['calendars']['GB-SCT']['years']['2026']['days']
+assert '2026-11-30' not in d['calendars']['GB-ENG']['years']['2026']['days']
+assert '2026-01-01' in d['calendars']['MY-14']['years']['2026']['days']
+assert '2026-01-01' not in d['calendars']['MY-01']['years']['2026']['days']
+print('Russia make-up work, Singapore observed date, UK and MY subdivision fixtures passed.')

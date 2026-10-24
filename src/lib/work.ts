@@ -12,7 +12,7 @@ export function regionState(country: Country, region: Region, instant: number, d
   let status: State;
   if (complete && event?.kind === 'public-holiday') status = 'holiday';
   else if (complete && event?.kind === 'working-day') status = inHours ? 'work' : 'rest';
-  else if (!complete && inHours && (!weekend || ['CN','RU'].includes(country.code))) status = 'unknown';
+  else if (!complete && inHours) status = 'unknown';
   else if (weekend) status = 'weekend';
   else status = inHours ? 'work' : 'rest';
   return { region, time, event, complete, inHours, status, working: status==='work', uncertain: status==='unknown' };
@@ -30,9 +30,13 @@ export function getStates(instant: number, data: CalendarData | null, settings: 
   return countries.filter(c=>settings.enabled.includes(c.code)).map(c=>countryState(c,instant,data,settings));
 }
 export function coverage(states: CountryState[], settings: Settings) {
-  const total = states.reduce((sum,s)=>sum+(settings.weighted ? settings.weights[s.country.code] : 1),0);
+  // Normalize before multiplication so very small, valid weights cannot underflow.
+  const scale = settings.weighted ? Math.max(...states.map(s=>settings.weights[s.country.code])) : 1;
+  if (!scale || !Number.isFinite(scale)) return { lower:0, upper:0 };
+  const weight = (s:CountryState) => settings.weighted ? settings.weights[s.country.code]/scale : 1;
+  const total = states.reduce((sum,s)=>sum+weight(s),0);
   if (!total) return { lower:0, upper:0 };
-  const sum = (uncertain: boolean) => states.reduce((n,s)=>n+((s.working+(uncertain?s.unknown:0))/s.regions.length)*(settings.weighted?settings.weights[s.country.code]:1),0)/total*100;
+  const sum = (uncertain: boolean) => states.reduce((n,s)=>n+((s.working+(uncertain?s.unknown:0))/s.regions.length)*weight(s),0)/total*100;
   return { lower: Math.round(sum(false)), upper: Math.round(sum(true)) };
 }
 export function timeline(country: Country, region: Region, date: string, data: CalendarData | null, settings: Settings) {
@@ -69,4 +73,21 @@ export function upcoming(instant: number, data: CalendarData | null, settings: S
     }
   }
   return events.sort((a,b)=>a.date.localeCompare(b.date)||a.country.name.localeCompare(b.country.name,'zh-CN'));
+}
+
+// Check every local year touched by a window, including a partially covered horizon.
+export function calendarCoverage(instant: number, data: CalendarData | null, settings: Settings, days: number, code='all') {
+  const missing: string[] = [], projected: string[] = [];
+  for (const country of countries.filter(c=>settings.enabled.includes(c.code)&&(code==='all'||c.code===code))) {
+    for (const region of country.regions.filter(r=>settings.regions[country.code].includes(r.id))) {
+      const start=localTime(instant,region.timeZone).date, end=addDays(start,days);
+      for(let year=Number(start.slice(0,4));year<=Number(end.slice(0,4));year++) {
+        const coverage=data?.calendars[region.calendarKey]?.years[String(year)]?.coverage;
+        const label=`${country.name}·${region.name} ${year}`;
+        if(!coverage) missing.push(label);
+        else if(coverage==='projected') projected.push(label);
+      }
+    }
+  }
+  return {missing,projected};
 }

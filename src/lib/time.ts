@@ -13,3 +13,12 @@ export const beijingInstant = (date: string, minutes: number) => Date.parse(`${d
 export const addDays = (date: string, days: number) => new Date(Date.parse(`${date}T12:00:00Z`)+days*86400000).toISOString().slice(0,10);
 export const weekdayText = (weekday: number) => `周${'日一二三四五六'[weekday]}`;
 export function validDate(date: string) { return /^\d{4}-\d{2}-\d{2}$/.test(date) && Number.isFinite(Date.parse(date)) && new Date(date).toISOString().slice(0,10) === date; }
+
+// Shareable simulation links always identify an instant, never a device-local time.
+export function parseSimulation(value: string | null): number | null {
+  if (!value) return null;
+  const match = value.match(/^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})(?::(\d{2})(?:\.\d{1,3})?)?(Z|[+-]\d{2}:\d{2})$/);
+  if (!match || !validDate(match[1]) || +match[2]>23 || +match[3]>59 || +(match[4]||0)>59) return null;
+  const instant=Date.parse(value);
+  return Number.isFinite(instant) ? instant : null;
+}
