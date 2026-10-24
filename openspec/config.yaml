@@ -2,5 +2,5 @@ schema: spec-driven
 context: |
   中文内部开发文档。项目为全球工作时钟与节假日看板，面向 UTC+8 的开发者。
   纯前端，GitHub Pages，支持桌面与手机，无账户、无后端、无密钥。
-  正式产品已实现并完成本地验证，部署状态见 docs/release-verification.md。不得把估算工作覆盖率称为真实在线人数。
+  正式产品已实现、完成本地与云端测试并部署 GitHub Pages，证据见 docs/release-verification.md。不得把估算工作覆盖率称为真实在线人数。
   使用 IANA 时区；节假日按目的地本地日期、适用地区和数据覆盖范围判断。

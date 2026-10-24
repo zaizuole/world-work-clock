@@ -12,7 +12,17 @@
 
 ## 部署
 
-独立仓库与首次 Pages 工作流准备中。线上 URL 尚未验收，本段必须在真实部署通过后更新。
+- 独立公开仓库：https://github.com/zaizuole/world-work-clock
+- 可用页面：https://zaizuole.github.io/world-work-clock/
+- 应用上线提交：`6c3a715751f274be46f11cb0477a32042ef4e3ce`。
+- 首次云端验证与发布：https://github.com/zaizuole/world-work-clock/actions/runs/40067994900 ，verify 与 deploy 均成功。
+- 2026-10-24 13:55（UTC+8）实际网址验证：HTML 与 JS/CSS/同源日历可加载，实时模式显示当前周六；模拟 10 月 26 日可显示 9 个工作国家/地区和新西兰劳动节。
+- 线上日历国家筛选有效，新加坡显示实际屠妖节及补休数据；无 JavaScript pageerror。
+- 360 / 390 / 768 / 1440px 视口无页面横向溢出。1440×1000 桌面和 390×844 手机截图已留存；手机为 Chromium 视口模拟，非真机 Safari。
+- CDP 确认线上标题实际使用 PingFang SC Semibold；浅色主题与银灰中性样式正常，无临时注入 CSS，无数据模拟或请求拦截。模拟时间截图使用真实发布日历，只改变查看时刻。
+- 日历版本 `1fb2d6cdb000d386`，运行时没有第三方 API 或秘密。
+
+后续文档/规格归档提交会正常再次触发相同流水线，不改变上述应用资源和日历内容。
 
 ## 仍然存在的限制
 

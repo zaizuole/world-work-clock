@@ -2,10 +2,11 @@
 
 以北京时间为参照，查看不同国家/地区的当地时间、工作时段、公共假日和调休。纯前端，无登录、无数据库、无运行时密钥。
 
-- 计划发布地址：<https://zaizuole.github.io/world-work-clock/>（首次部署验收中）
+- 可用网址：<https://zaizuole.github.io/world-work-clock/>
 - 独立仓库：<https://github.com/zaizuole/world-work-clock>
 - 交付流程：[开发与发布](docs/development-and-release.md)
-- OpenSpec：[设计与视觉规范](openspec/changes/add-world-work-calendar/design.md)、[任务清单](openspec/changes/add-world-work-calendar/tasks.md)
+- 视觉规范：[银灰中性设计系统](docs/design-system.md)
+- OpenSpec：[设计与视觉规范](openspec/changes/archive/2026-10-24-add-world-work-calendar/design.md)、[任务清单](openspec/changes/archive/2026-10-24-add-world-work-calendar/tasks.md)
 
 ## 功能
 

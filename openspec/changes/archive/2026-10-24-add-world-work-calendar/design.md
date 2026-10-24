@@ -1,6 +1,6 @@
 ## Context
 
-初始为空 Git 仓库；现已按用户确认的布局及 v0.3 配色实现正式应用、日历快照和部署工作流。实时交付状态见 docs/release-verification.md。数据源证据见 [调研](../../../docs/research.md)；所有数据源结论以调研日期 2026-10-24 为界，正式实施前复核。
+初始为空 Git 仓库；现已按用户确认的布局及 v0.3 配色实现正式应用、日历快照和部署工作流。实时交付状态见 docs/release-verification.md。数据源证据见 [调研](../../../../docs/research.md)；所有数据源结论以调研日期 2026-10-24 为界，正式实施前复核。
 
 ## Goals / Non-Goals
 
