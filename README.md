@@ -57,6 +57,6 @@ VITE_BASE_PATH=/world-work-clock/ npm run test:e2e
 
 ## 最新完整交付复核
 
-在已有仓库上补齐了日历窗口缺口说明、损坏数据与内存回退、跨页面模拟提示、部分城市时间范围及极端权重校验。自动测试包含 28 项业务测试和 21 项浏览器测试（模拟设备时区为洛杉矶，基准仍为北京时间），日历一致性和关键日期检查独立执行。具体发布 commit、工作流与真实页面验收结果见 [交付验证记录](docs/release-verification.md)。
+在已有仓库上补齐了日历窗口缺口说明、损坏数据与内存回退、跨页面模拟提示、部分城市时间范围及极端权重校验。自动测试包含 28 项业务测试和 21 项浏览器测试（模拟设备时区为洛杉矶，基准仍为北京时间），日历一致性和关键日期检查独立执行。应用提交 `dec17ff` 已由 [Actions 40071670081](https://github.com/zaizuole/world-work-clock/actions/runs/40071670081) 验证并发布，真实 Pages 的 21 项浏览器回归全部通过。具体发布 commit、工作流与真实页面验收结果见 [交付验证记录](docs/release-verification.md)。
 
 可以对实际部署执行相同浏览器回归：`E2E_BASE_URL=https://zaizuole.github.io/world-work-clock/ npm run test:e2e`；其中故障回退测试在隔离浏览器上下文拦截请求，不改变生产资源。
