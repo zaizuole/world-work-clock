@@ -1,0 +1,386 @@
+[
+  {
+    "code": "CN",
+    "name": "中国",
+    "flag": "🇨🇳",
+    "module": "china",
+    "scope": "全国公共假日及调休",
+    "sourceUrl": "https://www.gov.cn/gongbao/2025/issue_12406/202511/content_7048922.html",
+    "regions": [
+      {
+        "id": "CN-beijing",
+        "name": "北京",
+        "timeZone": "Asia/Shanghai",
+        "subdiv": "",
+        "default": true,
+        "calendarKey": "CN"
+      }
+    ]
+  },
+  {
+    "code": "RU",
+    "name": "俄罗斯",
+    "flag": "🇷🇺",
+    "module": "russia",
+    "scope": "全国公共假日；未覆盖各共和国额外节日",
+    "sourceUrl": "https://www.consultant.ru/law/ref/calendar/proizvodstvennye/2026/",
+    "regions": [
+      {
+        "id": "RU-moscow",
+        "name": "莫斯科",
+        "timeZone": "Europe/Moscow",
+        "subdiv": "",
+        "default": true,
+        "calendarKey": "RU"
+      },
+      {
+        "id": "RU-kaliningrad",
+        "name": "加里宁格勒",
+        "timeZone": "Europe/Kaliningrad",
+        "subdiv": "",
+        "default": true,
+        "calendarKey": "RU"
+      },
+      {
+        "id": "RU-yekaterinburg",
+        "name": "叶卡捷琳堡",
+        "timeZone": "Asia/Yekaterinburg",
+        "subdiv": "",
+        "default": true,
+        "calendarKey": "RU"
+      },
+      {
+        "id": "RU-novosibirsk",
+        "name": "新西伯利亚",
+        "timeZone": "Asia/Novosibirsk",
+        "subdiv": "",
+        "default": true,
+        "calendarKey": "RU"
+      },
+      {
+        "id": "RU-vladivostok",
+        "name": "符拉迪沃斯托克",
+        "timeZone": "Asia/Vladivostok",
+        "subdiv": "",
+        "default": true,
+        "calendarKey": "RU"
+      }
+    ]
+  },
+  {
+    "code": "MY",
+    "name": "马来西亚",
+    "flag": "🇲🇾",
+    "module": "malaysia",
+    "scope": "所选州/直辖区公共假日，宗教日期可能临时调整",
+    "sourceUrl": "https://www.kabinet.gov.my/hari-kelepasan-am/",
+    "regions": [
+      {
+        "id": "MY-kuala-lumpur",
+        "name": "吉隆坡",
+        "timeZone": "Asia/Kuala_Lumpur",
+        "subdiv": "14",
+        "default": true,
+        "calendarKey": "MY-14"
+      },
+      {
+        "id": "MY-johor",
+        "name": "柔佛",
+        "timeZone": "Asia/Kuala_Lumpur",
+        "subdiv": "01",
+        "default": false,
+        "calendarKey": "MY-01"
+      },
+      {
+        "id": "MY-penang",
+        "name": "槟城",
+        "timeZone": "Asia/Kuala_Lumpur",
+        "subdiv": "07",
+        "default": false,
+        "calendarKey": "MY-07"
+      }
+    ]
+  },
+  {
+    "code": "KR",
+    "name": "韩国",
+    "flag": "🇰🇷",
+    "module": "south_korea",
+    "scope": "全国公共假日，企业适用范围可能不同",
+    "sourceUrl": "https://www.kasi.re.kr/kor/publication/post/almanac",
+    "regions": [
+      {
+        "id": "KR-seoul",
+        "name": "首尔",
+        "timeZone": "Asia/Seoul",
+        "subdiv": "",
+        "default": true,
+        "calendarKey": "KR"
+      }
+    ]
+  },
+  {
+    "code": "US",
+    "name": "美国",
+    "flag": "🇺🇸",
+    "module": "united_states",
+    "scope": "联邦及所选州公共假日，私营企业未必停工",
+    "sourceUrl": "https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/",
+    "regions": [
+      {
+        "id": "US-new-york",
+        "name": "纽约",
+        "timeZone": "America/New_York",
+        "subdiv": "NY",
+        "default": true,
+        "calendarKey": "US-NY"
+      },
+      {
+        "id": "US-chicago",
+        "name": "芝加哥",
+        "timeZone": "America/Chicago",
+        "subdiv": "IL",
+        "default": true,
+        "calendarKey": "US-IL"
+      },
+      {
+        "id": "US-denver",
+        "name": "丹佛",
+        "timeZone": "America/Denver",
+        "subdiv": "CO",
+        "default": true,
+        "calendarKey": "US-CO"
+      },
+      {
+        "id": "US-los-angeles",
+        "name": "洛杉矶",
+        "timeZone": "America/Los_Angeles",
+        "subdiv": "CA",
+        "default": true,
+        "calendarKey": "US-CA"
+      },
+      {
+        "id": "US-anchorage",
+        "name": "安克雷奇",
+        "timeZone": "America/Anchorage",
+        "subdiv": "AK",
+        "default": true,
+        "calendarKey": "US-AK"
+      },
+      {
+        "id": "US-honolulu",
+        "name": "檀香山",
+        "timeZone": "Pacific/Honolulu",
+        "subdiv": "HI",
+        "default": true,
+        "calendarKey": "US-HI"
+      }
+    ]
+  },
+  {
+    "code": "NZ",
+    "name": "新西兰",
+    "flag": "🇳🇿",
+    "module": "new_zealand",
+    "scope": "全国及所选地区周年假日",
+    "sourceUrl": "https://www.employment.govt.nz/leave-and-holidays/public-holidays",
+    "regions": [
+      {
+        "id": "NZ-auckland",
+        "name": "奥克兰",
+        "timeZone": "Pacific/Auckland",
+        "subdiv": "AUK",
+        "default": true,
+        "calendarKey": "NZ-AUK"
+      },
+      {
+        "id": "NZ-wellington",
+        "name": "惠灵顿",
+        "timeZone": "Pacific/Auckland",
+        "subdiv": "WGN",
+        "default": false,
+        "calendarKey": "NZ-WGN"
+      },
+      {
+        "id": "NZ-chatham",
+        "name": "查塔姆群岛",
+        "timeZone": "Pacific/Chatham",
+        "subdiv": "CIT",
+        "default": false,
+        "calendarKey": "NZ-CIT"
+      }
+    ]
+  },
+  {
+    "code": "AU",
+    "name": "澳大利亚",
+    "flag": "🇦🇺",
+    "module": "australia",
+    "scope": "所选州/领地公共假日",
+    "sourceUrl": "https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays",
+    "regions": [
+      {
+        "id": "AU-sydney",
+        "name": "悉尼",
+        "timeZone": "Australia/Sydney",
+        "subdiv": "NSW",
+        "default": true,
+        "calendarKey": "AU-NSW"
+      },
+      {
+        "id": "AU-melbourne",
+        "name": "墨尔本",
+        "timeZone": "Australia/Melbourne",
+        "subdiv": "VIC",
+        "default": true,
+        "calendarKey": "AU-VIC"
+      },
+      {
+        "id": "AU-perth",
+        "name": "珀斯",
+        "timeZone": "Australia/Perth",
+        "subdiv": "WA",
+        "default": true,
+        "calendarKey": "AU-WA"
+      },
+      {
+        "id": "AU-brisbane",
+        "name": "布里斯班",
+        "timeZone": "Australia/Brisbane",
+        "subdiv": "QLD",
+        "default": false,
+        "calendarKey": "AU-QLD"
+      },
+      {
+        "id": "AU-adelaide",
+        "name": "阿德莱德",
+        "timeZone": "Australia/Adelaide",
+        "subdiv": "SA",
+        "default": false,
+        "calendarKey": "AU-SA"
+      },
+      {
+        "id": "AU-darwin",
+        "name": "达尔文",
+        "timeZone": "Australia/Darwin",
+        "subdiv": "NT",
+        "default": false,
+        "calendarKey": "AU-NT"
+      }
+    ]
+  },
+  {
+    "code": "GB",
+    "name": "英国",
+    "flag": "🇬🇧",
+    "module": "united_kingdom",
+    "scope": "按英格兰/威尔士/苏格兰/北爱区分银行假日",
+    "sourceUrl": "https://www.gov.uk/bank-holidays",
+    "regions": [
+      {
+        "id": "GB-london",
+        "name": "伦敦",
+        "timeZone": "Europe/London",
+        "subdiv": "ENG",
+        "default": true,
+        "calendarKey": "GB-ENG"
+      },
+      {
+        "id": "GB-cardiff",
+        "name": "加的夫",
+        "timeZone": "Europe/London",
+        "subdiv": "WLS",
+        "default": false,
+        "calendarKey": "GB-WLS"
+      },
+      {
+        "id": "GB-edinburgh",
+        "name": "爱丁堡",
+        "timeZone": "Europe/London",
+        "subdiv": "SCT",
+        "default": false,
+        "calendarKey": "GB-SCT"
+      },
+      {
+        "id": "GB-belfast",
+        "name": "贝尔法斯特",
+        "timeZone": "Europe/London",
+        "subdiv": "NIR",
+        "default": false,
+        "calendarKey": "GB-NIR"
+      }
+    ]
+  },
+  {
+    "code": "JP",
+    "name": "日本",
+    "flag": "🇯🇵",
+    "module": "japan",
+    "scope": "国民祝日、振替休日与国民休日",
+    "sourceUrl": "https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html",
+    "regions": [
+      {
+        "id": "JP-tokyo",
+        "name": "东京",
+        "timeZone": "Asia/Tokyo",
+        "subdiv": "",
+        "default": true,
+        "calendarKey": "JP"
+      }
+    ]
+  },
+  {
+    "code": "SG",
+    "name": "新加坡",
+    "flag": "🇸🇬",
+    "module": "singapore",
+    "scope": "公众假期；补休按周日为休息日的安排",
+    "sourceUrl": "https://www.mom.gov.sg/employment-practices/public-holidays",
+    "regions": [
+      {
+        "id": "SG-singapore",
+        "name": "新加坡",
+        "timeZone": "Asia/Singapore",
+        "subdiv": "",
+        "default": true,
+        "calendarKey": "SG"
+      }
+    ]
+  },
+  {
+    "code": "HK",
+    "name": "香港",
+    "flag": "🇭🇰",
+    "module": "hongkong",
+    "scope": "公众假期；与劳动法下的法定假日口径不同",
+    "sourceUrl": "https://www.gov.hk/tc/about/abouthk/holiday/2026.htm",
+    "regions": [
+      {
+        "id": "HK-hong-kong",
+        "name": "香港",
+        "timeZone": "Asia/Hong_Kong",
+        "subdiv": "",
+        "default": true,
+        "calendarKey": "HK"
+      }
+    ]
+  },
+  {
+    "code": "MO",
+    "name": "澳门",
+    "flag": "🇲🇴",
+    "module": "macau",
+    "scope": "强制性假日，不套用仅公务员适用的补休",
+    "sourceUrl": "https://www.gov.mo/zh-hant/public-holidays/year-2026/",
+    "regions": [
+      {
+        "id": "MO-macau",
+        "name": "澳门",
+        "timeZone": "Asia/Macau",
+        "subdiv": "",
+        "default": true,
+        "calendarKey": "MO"
+      }
+    ]
+  }
+]

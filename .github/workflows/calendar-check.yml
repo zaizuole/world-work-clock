@@ -1,0 +1,29 @@
+name: 日历年度维护检查
+on:
+  schedule:
+    - cron: '23 3 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r scripts/requirements.txt
+      - run: python scripts/generate_calendars.py --year 2026 --check
+      - run: python scripts/check_calendars.py
+      - name: 检查是否需要核验下一年
+        run: |
+          python - <<'PY'
+          from datetime import datetime, timezone
+          from pathlib import Path
+          import json
+          d=json.loads(Path('public/data/calendars.json').read_text())
+          now=datetime.now(timezone.utc)
+          assert now.year <= d['reviewedThrough'], '已进入尚未核验的年份，请核对官方日历后更新覆盖年份。'
+          print('已核验规则年份覆盖当前年；未来年份仍明确标为预测。')
+          PY
