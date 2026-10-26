@@ -49,3 +49,5 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}.mute
 .country-name small,.city-time small,.badge,.hours,.table-head,.band .mobile-hours,.top-clock small{font-size:12px}
 @media(max-width:767px){.country-chip .chip-name .flag{font-size:12px}.brand-mark{width:32px;height:32px}.country-row{grid-template-columns:minmax(100px,1fr) 72px auto}.badge{white-space:normal;line-height:1.4;max-width:90px}.band .mobile-hours{font-size:10px}}
 @media(max-width:380px){.focus-main{padding-left:15px;padding-right:15px}.active-countries{gap:6px}.country-chip{padding-left:4px;padding-right:4px}.chip-detail{letter-spacing:-.2px}}
+
+.chip-count{display:inline-block;white-space:nowrap}

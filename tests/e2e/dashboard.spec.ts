@@ -17,9 +17,11 @@ test('mobile keeps the overview and holiday usable with no horizontal overflow',
 test('settings persist and invalid work intervals do not save',async({page})=>{
  await page.goto(sample);await expect(page.getByText(/日历已加载/)).toBeVisible();await page.getByRole('button',{name:'关注与设置'}).click();
  await page.locator('.country-check').filter({hasText:'澳门'}).getByRole('checkbox').uncheck();
+ await page.getByRole('checkbox',{name:'墨尔本',exact:true}).uncheck();
  await page.getByLabel('当地工作时段',{exact:true}).fill('18:00-09:00');await page.getByRole('button',{name:'保存设置'}).click();await expect(page.getByRole('alert')).toContainText('跨午夜');
  await page.getByLabel('当地工作时段',{exact:true}).fill('09:00-18:00');await page.getByRole('button',{name:'保存设置'}).click();await expect(page.locator('.focus-description')).toContainText('11');
  await page.reload();await expect(page.getByText(/日历已加载/)).toBeVisible();await expect(page.locator('.focus-description')).toContainText('11');
+ await expect(page.getByRole('button',{name:'查看澳大利亚的城市详情'})).toContainText('部分城市工作中 1/2');
 });
 test('missing calendar gives unknown state; retry recovers',async({page})=>{
  await page.route('**/data/calendars.json',route=>route.abort());await page.goto(sample);
@@ -44,7 +46,8 @@ for(const width of [360,390,768,1440])test(`full application fits ${width}px and
  await page.setViewportSize({width,height:width<768?844:1000});await page.goto(sample);await expect(page.getByText(/日历已加载/)).toBeVisible();
  await expect(page.locator('.time-disclosure')).not.toHaveAttribute('open','');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
- await expect(page.getByRole('button',{name:'查看澳大利亚的城市详情'})).toContainText('部分城市工作中');
+ await expect(page.getByRole('button',{name:'查看澳大利亚的城市详情'})).toContainText('部分城市工作中 1/3');
+ await expect(page.getByRole('button',{name:'查看俄罗斯的城市详情'})).toContainText('部分城市工作中 4/5');
  await expect(page.getByRole('button',{name:'查看澳大利亚的城市详情'})).toContainText('16:30–19:30');
  if(width<768)expect((await page.locator('.alert-country').boundingBox())!.y).toBeLessThan(844);
  await page.screenshot({path:testInfo.outputPath(`overview-${width}.png`)});
